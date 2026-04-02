@@ -1,10 +1,8 @@
 # Decap CMS — Terre et Bijou
-# Backend : Git Gateway (Netlify Identity) → écrit dans le dépôt GitHub lié au site.
+# Les chemins media_folder commençant par "/" sont relatifs à la RACINE du dépôt
+# (évite l’enregistrement sous content/services/public/...).
 
 site_url: https://terreetbijou.netlify.app
-# Dossier par défaut ; chaque collection peut redéfinir son sous-dossier.
-media_folder: public/images
-public_folder: /images
 
 backend:
   name: git-gateway
@@ -22,7 +20,7 @@ collections:
     identifier_field: titre
     extension: md
     format: frontmatter
-    media_folder: public/images/realisations
+    media_folder: /public/images/realisations
     public_folder: /images/realisations
     fields:
       - { label: Titre, name: titre, widget: string }
@@ -30,7 +28,7 @@ collections:
       - label: Image
         name: image
         widget: image
-        hint: "JPG ou PNG de préférence. Évitez les fichiers HEIC (iPhone) : convertissez-les en JPEG avant envoi."
+        hint: "JPG ou PNG. Après Publier : vérifier sur GitHub que le fichier est bien dans public/images/realisations/"
       - label: Catégorie
         name: categorie
         widget: select
@@ -51,7 +49,7 @@ collections:
     identifier_field: titre
     extension: md
     format: frontmatter
-    media_folder: public/images/services
+    media_folder: /public/images/services
     public_folder: /images/services
     fields:
       - { label: Titre, name: titre, widget: string }
@@ -81,4 +79,4 @@ collections:
       - label: Photo du service
         name: image
         widget: image
-        hint: "JPG ou PNG recommandé (pas HEIC). Après « Publier », attendez la fin du déploiement Netlify pour voir l’aperçu."
+        hint: "JPG ou PNG. Le fichier doit apparaître sur GitHub dans public/images/services/ — sinon le site affiche un « ? ». Après Publier, attendre le déploiement Netlify."

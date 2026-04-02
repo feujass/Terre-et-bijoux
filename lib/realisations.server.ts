@@ -1,7 +1,8 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { normalizeCmsImagePath } from "@/lib/cms-image";
+import { normalizeCmsImagePath, pickCmsImageSrc } from "@/lib/cms-image";
+import { resolvePublicImagePath } from "@/lib/resolve-public-image";
 import type { Realisation } from "@/lib/realisations.shared";
 
 /** Dossier Markdown des réalisations (synchronisé avec Decap CMS / Git). */
@@ -27,9 +28,11 @@ export function getAllRealisations(): Realisation[] {
       slug,
       titre: String(data.titre ?? ""),
       description: String(data.description ?? ""),
-      image: normalizeCmsImagePath(String(data.image ?? ""), {
-        filenameOnlyFolder: "images/realisations",
-      }),
+      image: resolvePublicImagePath(
+        normalizeCmsImagePath(pickCmsImageSrc(data.image), {
+          filenameOnlyFolder: "images/realisations",
+        })
+      ),
       categorie: String(data.categorie ?? "Autre"),
       date: String(data.date ?? ""),
     };
