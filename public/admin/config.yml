@@ -1,10 +1,10 @@
 # Decap CMS — Terre et Bijou
 # Backend : Git Gateway (Netlify Identity) → écrit dans le dépôt GitHub lié au site.
-# Remplacez site_url par l’URL exacte de production (Netlify ou domaine custom).
 
-site_url: https://terreetbijou.netlify.app 
-media_folder: public/images/realisations
-public_folder: /images/realisations
+site_url: https://terreetbijou.netlify.app
+# Dossier par défaut ; chaque collection peut redéfinir son sous-dossier.
+media_folder: public/images
+public_folder: /images
 
 backend:
   name: git-gateway
@@ -18,11 +18,12 @@ collections:
     label_singular: Réalisation
     folder: content/realisations
     create: true
-    # Nom de fichier dérivé du titre (sanitisé par Decap).
     slug: "{{slug}}"
     identifier_field: titre
     extension: md
     format: frontmatter
+    media_folder: public/images/realisations
+    public_folder: /images/realisations
     fields:
       - { label: Titre, name: titre, widget: string }
       - { label: Description, name: description, widget: text }
@@ -37,3 +38,41 @@ collections:
           - Allée
           - Autre
       - { label: Date, name: date, widget: datetime, date_format: DD/MM/YYYY, time_format: false }
+
+  - name: services
+    label: Services
+    label_singular: Service
+    folder: content/services
+    create: true
+    slug: "{{slug}}"
+    identifier_field: titre
+    extension: md
+    format: frontmatter
+    media_folder: public/images/services
+    public_folder: /images/services
+    fields:
+      - { label: Titre, name: titre, widget: string }
+      - label: Ordre d'affichage
+        name: ordre
+        widget: number
+        value_type: int
+        min: 1
+        max: 20
+        default: 1
+        hint: "1 = en premier sur la page Services"
+      - { label: Icône (emoji), name: icone, widget: string, hint: "Ex. 🌿" }
+      - label: Résumé (cartes page d'accueil)
+        name: resume
+        widget: text
+        hint: "Texte court sous le titre sur l'accueil"
+      - label: Description (page Services)
+        name: description
+        widget: text
+      - label: Points forts (puces)
+        name: points
+        widget: list
+        field:
+          label: Ligne
+          name: ligne
+          widget: string
+      - { label: Photo du service, name: image, widget: image }
