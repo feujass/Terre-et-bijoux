@@ -4,6 +4,11 @@
 
 site_url: https://terreetbijou.netlify.app
 
+# Obligatoire à la racine (Decap 3) : au moins media_folder OU media_library.
+# Valeur par défaut ; chaque collection redéfinit son sous-dossier ci-dessous.
+media_folder: public/images
+public_folder: /images
+
 backend:
   name: git-gateway
   branch: main
