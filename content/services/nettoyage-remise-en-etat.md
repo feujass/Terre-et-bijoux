@@ -13,5 +13,5 @@ points:
   - ligne: Évacuation des déchets verts
   - ligne: Nettoyage des allées
   - ligne: Désherbage intensif
-image: /images/services/img_0633.jpg
+image: img_0634.jpg
 ---
