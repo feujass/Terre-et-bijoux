@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import type { Service } from "@/lib/services.shared";
 
@@ -77,12 +76,13 @@ export default function ServicesPageClient({ services }: Props) {
                   >
                     {service.image ? (
                       <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-light">
-                        <Image
+                        {/* <img> : accepte toutes les URLs CMS (hébergeurs) sans liste blanche next/image */}
+                        <img
                           src={service.image}
                           alt={service.titre}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover opacity-90"
+                          className="absolute inset-0 h-full w-full object-cover opacity-90"
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
                     ) : (

@@ -27,7 +27,10 @@ collections:
     fields:
       - { label: Titre, name: titre, widget: string }
       - { label: Description, name: description, widget: text }
-      - { label: Image, name: image, widget: image }
+      - label: Image
+        name: image
+        widget: image
+        hint: "JPG ou PNG de préférence. Évitez les fichiers HEIC (iPhone) : convertissez-les en JPEG avant envoi."
       - label: Catégorie
         name: categorie
         widget: select
@@ -75,4 +78,7 @@ collections:
           label: Ligne
           name: ligne
           widget: string
-      - { label: Photo du service, name: image, widget: image }
+      - label: Photo du service
+        name: image
+        widget: image
+        hint: "JPG ou PNG recommandé (pas HEIC). Après « Publier », attendez la fin du déploiement Netlify pour voir l’aperçu."

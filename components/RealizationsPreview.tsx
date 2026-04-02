@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import type { Realisation } from "@/lib/realisations.shared";
 
 type Props = {
@@ -49,12 +48,12 @@ const RealizationsPreview = ({ items }: Props) => {
               >
                 <div className="aspect-square relative overflow-hidden">
                   {realization.image ? (
-                    <Image
+                    <img
                       src={realization.image}
                       alt={realization.titre}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="absolute inset-0 h-full w-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
+                      decoding="async"
                     />
                   ) : (
                     <div className="absolute inset-0 bg-primary/10 flex items-center justify-center text-primary/40 text-sm">

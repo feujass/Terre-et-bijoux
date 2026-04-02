@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { normalizeCmsImagePath } from "@/lib/cms-image";
 import type { Service, ServicePoint } from "@/lib/services.shared";
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "services");
@@ -39,7 +40,9 @@ export function getAllServices(): Service[] {
       icone: String(data.icone ?? "🌿"),
       resume: String(data.resume ?? "").trim() || String(data.description ?? "").slice(0, 160),
       description: String(data.description ?? ""),
-      image: String(data.image ?? ""),
+      image: normalizeCmsImagePath(String(data.image ?? ""), {
+        filenameOnlyFolder: "images/services",
+      }),
       points: normalizePoints(data.points),
     };
   });

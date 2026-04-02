@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import type { Realisation } from "@/lib/realisations.shared";
 import { REALISATION_CATEGORIES } from "@/lib/realisations.shared";
 
@@ -91,12 +90,12 @@ export default function RealisationsGallery({ items }: Props) {
                 >
                   <div className="aspect-[4/3] relative overflow-hidden">
                     {realization.image ? (
-                      <Image
+                      <img
                         src={realization.image}
                         alt={realization.titre}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="absolute inset-0 h-full w-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        loading="lazy"
+                        decoding="async"
                       />
                     ) : (
                       <div
