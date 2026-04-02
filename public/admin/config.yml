@@ -2,7 +2,7 @@
 # Backend : Git Gateway (Netlify Identity) → écrit dans le dépôt GitHub lié au site.
 # Remplacez site_url par l’URL exacte de production (Netlify ou domaine custom).
 
-site_url: https://terre-et-bijou.fr
+site_url: https://terreetbijou.netlify.app 
 media_folder: public/images/realisations
 public_folder: /images/realisations
 
