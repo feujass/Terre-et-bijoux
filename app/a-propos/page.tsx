@@ -3,29 +3,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const values = [
-  {
-    title: "Respect de l'environnement",
-    description: "Nous privilégions des méthodes écologiques et respectueuses de la biodiversité dans tous nos projets.",
-    icon: "🌍",
-  },
-  {
-    title: "Excellence",
-    description: "Un travail soigné et de qualité, avec une attention portée aux détails pour chaque intervention.",
-    icon: "⭐",
-  },
-  {
-    title: "Proximité",
-    description: "Une relation de confiance avec nos clients, basée sur l'écoute et la communication transparente.",
-    icon: "🤝",
-  },
-  {
-    title: "Passion",
-    description: "Notre amour pour les jardins et la nature se reflète dans chaque projet que nous réalisons.",
-    icon: "❤️",
-  },
-];
-
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
@@ -51,10 +28,10 @@ export default function AboutPage() {
       {/* Histoire */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-3xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
@@ -82,60 +59,6 @@ export default function AboutPage() {
                 </p>
               </div>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative h-96 rounded-lg overflow-hidden shadow-xl"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-light">
-                <img
-                  src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80"
-                  alt="Équipe Terre & Bijou"
-                  className="w-full h-full object-cover opacity-80"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Valeurs */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-serif text-primary mb-4">
-              Nos Valeurs
-            </h2>
-            <p className="text-lg text-primary/70 max-w-2xl mx-auto">
-              Les principes qui guident notre travail au quotidien
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="bg-white p-8 rounded-lg text-center shadow-md"
-              >
-                <div className="text-5xl mb-4">{value.icon}</div>
-                <h3 className="text-xl font-semibold text-primary mb-3">
-                  {value.title}
-                </h3>
-                <p className="text-primary/70">{value.description}</p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
